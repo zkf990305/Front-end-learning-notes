@@ -4,7 +4,7 @@
 # 基于编辑器的 HTTP 客户端请求
 /httpRequests/
 # 忽略掉根目录下的 node_modules目录
-node_modules/
+#node_modules/
 # 使用了 ** 通配符来匹配任意子文件夹，所以无论 node_modules 文件夹位于项目的哪个层级，都会被忽略。
 **/node_modules/
 

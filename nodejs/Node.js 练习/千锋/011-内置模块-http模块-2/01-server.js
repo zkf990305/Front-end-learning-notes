@@ -3,12 +3,12 @@
  * @Description:
  * @Date: create in 2023/6/24 19:08
  */
-var http = require("http")
-var moduleRenderHTML = require("./module/renderHTML")
-var moduleRenderStatus = require("./module/renderStatus")
+const http = require("http")
+let moduleRenderHTML = require("./module/renderHTML")
+let moduleRenderStatus = require("./module/renderStatus")
 
 // 创建服务器
-var server = http.createServer()
+let server = http.createServer()
 
 server.on("request",(req,res)=>{
     //req 接受浏览器传的参数

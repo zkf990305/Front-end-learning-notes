@@ -4,7 +4,7 @@
  * @Date: create in 2023/6/24 19:08
  */
 
-var http = require("http")
+const http = require("http")
 
 // 创建服务器
 http.createServer((req, res) => {

@@ -4,9 +4,9 @@
  * @Date: create in 2023/6/19 0:12
  */
 
-var moduleA = require('./a')
-var moduleB = require('./b')
-var moduleC = require('./c')
+let moduleA = require('./a')
+let moduleB = require('./b')
+let moduleC = require('./c')
 
 console.log(moduleA)
 

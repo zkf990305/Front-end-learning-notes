@@ -3,13 +3,13 @@
  * @Description:
  * @Date: create in 2023/6/24 19:08
  */
-var http = require("http")
+const http = require("http")
 const url = require("url")
-var moduleRenderHTML = require("./module/renderHTML")
-var moduleRenderStatus = require("./module/renderStatus")
+let moduleRenderHTML = require("./module/renderHTML")
+let moduleRenderStatus = require("./module/renderStatus")
 
 // 创建服务器
-var server = http.createServer()
+const server = http.createServer()
 
 server.on("request",(req,res)=>{
     //req 接受浏览器传的参数
@@ -49,9 +49,8 @@ server.listen(3000,()=>{
 // const parsedObj = url.format(parsedStr)
 // console.log(parsedObj)
 
-var a = url.resolve('/one/two/three/', 'four')
-console.log(a)
-
-var b = url.resolve('http://example.com/aaaa/bbbbb/', '/one')
-
-console.log(b)
+// ( 注意最后加/ ，不加/的区别 )
+let a = url.resolve('/one/two/three', 'four')
+let b = url.resolve('http://example.com/', '/one')
+let c = url.resolve('http://example.com/one', '/two')
+console.log(a + ", " + b + ", " + c)

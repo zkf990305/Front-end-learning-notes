@@ -1,0 +1,14 @@
+{
+  "name": "spider-01",
+  "version": "1.0.0",
+  "description": "测试http模块--爬虫",
+  "main": "01-spider.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "sail",
+  "license": "ISC",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12"
+  }
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    <%= title %>
+  </title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+  <h1>MongoDB的使用——增删改查的演示</h1>
+  <p>Welcome to <%= title %>
+  </p>
+
+  <div>
+
+    <div>用户名：<input type="text" placeholder="请输入姓名" id="username" /></div>
+
+    <div>密码：<input type="password"  placeholder="请输入密码" id="password" /></div>
+    <div>年龄：<input type="number"  placeholder="请输入年龄" id="age" /></div>
+   
+    <div><button id="register">添加</button></div>
+
+  </div>
+
+  <script>
+    var register = document.querySelector('#register');
+    var username = document.querySelector('#username');
+    var password = document.querySelector('#password');
+    var age = document.querySelector('#age');
+
+    register.onclick = ()=> {
+      console.log(username.value, password.value, age.value);
+      fetch('/api/user/add', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          username: username.value,
+          password: password.value,
+          age: age.value
+        })
+      }).then(res => res.json()).then(res => {
+        console.log(res);
+      })
+    }
+  </script>
+ 
+</body>
+
+</html>

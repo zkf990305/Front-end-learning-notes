@@ -48,6 +48,7 @@
     var username = document.querySelector('#username');
     var password = document.querySelector('#password');
     var age = document.querySelector('#age');
+    var table = document.querySelector('table');
 
     register.onclick = () => {
       console.log(username.value, password.value, age.value);
@@ -67,7 +68,9 @@
     }
 
     update.onclick = () => {
-      fetch("/api/user/update/6582bab3a8b4b677498c81d3", {
+      var lastRow = table.rows[table.rows.length - 1];
+      var lastId = lastRow.cells[0].innerText;
+      fetch("/api/user/update/" + lastId, {
         method: "POST",
         body: JSON.stringify({
           username: "修改的名字",
@@ -83,7 +86,9 @@
     }
 
     deletebutton.onclick = () => {
-      fetch("/api/user/delete/6582bab3a8b4b677498c81d3").then(res => res.json()).then(res => {
+      var lastRow = table.rows[table.rows.length - 1];
+      var lastId = lastRow.cells[0].innerText;
+      fetch("/api/user/delete/" + lastId).then(res => res.json()).then(res => {
         console.log(res)
       })
     }

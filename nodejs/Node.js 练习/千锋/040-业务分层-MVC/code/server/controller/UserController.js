@@ -13,8 +13,8 @@ const UserController = {
 
     },
     updateUser: async (req, res) => { // 更新用户
-        const { username, age, password } = req.body
-        await UserService.updateUser(req.params.myid, username, age, password)
+        const {username, password, age } = req.body
+        await UserService.updateUser(req.params.id, username, password, age)
         res.send({
             ok: 1
         })

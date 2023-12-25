@@ -15,7 +15,7 @@ router.post('/user',
 );
 
 //动态路由, 获取id
-router.put("/user/:myid",
+router.put("/user/:id",
 // PUT 更新用户
 UserController.updateUser
 

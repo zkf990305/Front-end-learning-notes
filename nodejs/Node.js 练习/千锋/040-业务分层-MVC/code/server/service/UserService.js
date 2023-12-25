@@ -7,9 +7,9 @@ const UserService = {
         })
 
     },
-    updateUser: (id, username, age, password) => {
+    updateUser: (id,username, password, age) => {
         return UserModel.updateOne({  id }, {
-            username, age, password
+            username, password, age
         })
     },
     removeUser: (_id) => {

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    <%= title %>
+  </title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+  <h1>后台系统-登录业务</h1>
+
+  <div>
+
+    <div>用户名：<input type="text" placeholder="请输入姓名" id="username" /></div>
+
+    <div>密码：<input type="password" placeholder="请输入密码" id="password" /></div>
+   
+
+    <div><button id="register">添加</button></div>
+
+
+  </div>
+
+  <script>
+    var register = document.querySelector('#register');
+   
+    var username = document.querySelector('#username');
+    var password = document.querySelector('#password');
+   
+    register.onclick = () => {
+      console.log(username.value, password.value);
+      fetch('/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          username: username.value,
+          password: password.value
+        })
+      }).then(res => res.json()).then(res => {
+        console.log(res);
+        if (res.ok === 1) {
+          alert('登录成功');
+          window.location.href = '/';
+        } else {
+          alert('用户名或密码错误');
+        }
+      })
+    }
+
+    
+  </script>
+
+</body>
+
+</html>

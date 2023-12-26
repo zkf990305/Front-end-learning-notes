@@ -8,7 +8,7 @@ const UserService = {
 
     },
     updateUser: (id,username, password, age) => {
-        return UserModel.updateOne({  id }, {
+        return UserModel.updateOne({  _id:id }, {
             username, password, age
         })
     },

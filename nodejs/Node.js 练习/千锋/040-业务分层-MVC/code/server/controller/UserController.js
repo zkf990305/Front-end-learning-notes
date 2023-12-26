@@ -14,6 +14,7 @@ const UserController = {
     },
     updateUser: async (req, res) => { // 更新用户
         const {username, password, age } = req.body
+        console.log(req.params.id, username, password, age);
         await UserService.updateUser(req.params.id, username, password, age)
         res.send({
             ok: 1

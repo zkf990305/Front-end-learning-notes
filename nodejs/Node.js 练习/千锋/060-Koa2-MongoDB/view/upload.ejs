@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    upload
+    <form action="/user/upload" method="POST" enctype="multipart/form-data">
+        <div>用户名：<input type="text" placeholder="请输入姓名" id="username" name='username' /></div>
+
+        <div>密码：<input type="password" placeholder="请输入密码" id="password" name='password' /></div>
+        <div>年龄：<input type="number" placeholder="请输入年龄" id="age" name='age' /></div>
+
+        <div>
+            头像： <input type="file" name="avatar">
+        </div>
+        <div>
+            <input type="submit" value="提交">
+        </div>
+
+    </form>
+</body>
+
+</html>

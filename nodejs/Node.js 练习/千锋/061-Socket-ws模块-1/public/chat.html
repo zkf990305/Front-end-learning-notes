@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  </head>
+  <body>
+    <h1>聊天室</h1>
+
+    <script>
+      const ws = new WebSocket("ws://localhost:8080");
+      ws.onopen = () => {
+        console.log("open,连接成功");
+      };
+      ws.onmessage = (evt) => {
+        console.log(evt.data);
+      };
+      ws.onclose = () => {
+        console.log("close");
+      };
+      ws.onerror = () => {
+        console.log("error");
+      };
+    </script>
+  </body>
+</html>

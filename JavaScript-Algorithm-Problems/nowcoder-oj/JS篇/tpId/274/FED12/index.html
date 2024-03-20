@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Function.bind</title>
+</head>
+<body>
+    <script type="text/javascript">
+        // 补全代码
+        Function.prototype._bind = function(target, ...arguments1) {
+            target['fn']=this; // 当前函数
+            return function(...newArgs) {
+                return target['fn'](...arguments1, ...newArgs);
+            };
+        }
+        function greet(message, name) {
+            console.log(message + ", " + name);
+        }
+
+        let person = {
+            name: "Bob"
+        };
+
+        let greetPersonWithMessage = greet._bind(person, "Hello");
+        greetPersonWithMessage("Alice");
+        // 输出："Hello, Alice"，新函数内部的this指向person对象，并且预设了参数"Hello"
+
+    </script>
+</body>
+</html>

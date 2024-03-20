@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script type="text/javascript">
+        const _objectFreeze = object => {
+            // 补全代码
+            if(typeof object !== 'object' || object === null) return object;
+            Object.getOwnPropertyNames(object).forEach(function(prop) {
+                let value = object[prop];
+
+                if (typeof value === 'object' && value !== null) {
+                    _objectFreeze(value); // 递归冻结嵌套对象
+                }
+            });
+
+            return Object.freeze(object);
+
+        }
+        // 样例
+        const obj = {
+            name: 'John',
+            age: 30,
+            nestedObj: {
+                prop: 'value'
+            }
+        };
+
+        const frozenObj = _objectFreeze(obj);
+
+        // 尝试修改属性
+        frozenObj.name = 'Jane'; // 不会生效
+
+        // 尝试修改嵌套对象属性
+        frozenObj.nestedObj.prop = 'new value'; // 不会生效
+
+        console.log(frozenObj); // 打印冻结后的对象
+
+        // 尝试添加新属性
+        frozenObj.address = '123 Main St'; // 不会生效
+
+        console.log(frozenObj); // 打印冻结后的对象，属性未被添加
+
+        // 尝试删除属性
+        delete frozenObj.age; // 不会生效
+
+        console.log(frozenObj); // 打印冻结后的对象，属性未被删除
+    </script>
+</body>
+</html>

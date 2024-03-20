@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+      /* 填写样式 */
+    </style>
+    <title>Array.map</title>
+</head>
+<body>
+  <!-- 填写标签 -->
+  <script type="text/javascript">
+    // 实现Array.map函数的功能且该新函数命名为"_map"。
+    Array.prototype._map = function(Fn) {
+      let newArray = [];
+      for (let i = 0; i < this.length; i++) {
+        newArray.push(Fn(this[i], i, this));
+      }
+      return newArray;
+    }
+    console.log([1, 2]._map(i => i * 2));
+  </script>
+</body>
+</html>

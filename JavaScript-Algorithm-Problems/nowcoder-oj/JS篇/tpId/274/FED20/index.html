@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>观察者模式</title>
+</head>
+<body>
+
+    <script type="text/javascript">
+        // 补全代码
+        class Observerd {
+            constructor(name) { // 被观察者构造函数需要包含"name"属性和"state"属性且"state"初始值为"走路"
+                this.name = name;
+                this.state = "走路";
+                this.observers = [];
+            }
+            setObserver(observer) { // 被观察者创建"setObserver"函数用于保存观察者们
+                this.observers.push(observer);
+            }
+            setState(state) { // 被观察者创建"setState"函数用于设置该观察者"state"并且通知所有观察者
+                this.state = state;
+                this.notifyObservers();
+            }
+            notifyObservers() {
+                this.observers.forEach(observer => {
+                    observer.update(this);
+                });
+            }
+        }
+
+        class Observer {
+            update(observed) {
+                console.log(`${observed.name}正在${observed.state}`);
+            }
+        }
+        // 示例代码
+        const observer = new Observer();
+        const observed = new Observerd('小明');
+
+        observed.setObserver(observer);
+
+        observed.setState('跑步'); // 输出 "小明正在跑步"
+    </script>
+</body>
+</html>

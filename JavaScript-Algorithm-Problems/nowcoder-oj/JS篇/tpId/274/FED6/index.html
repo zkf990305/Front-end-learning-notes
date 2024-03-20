@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+      /* 填写样式 */
+    </style>
+    <title>instanceof</title>
+</head>
+<body>
+  <!-- 填写标签 -->
+  <script type="text/javascript">
+    // 填写JavaScript
+    // [判断] 第一个实例参数是否在第二个函数参数的原型链上
+    const _instanceof = (target, Fn) => {
+      while (target !== null) {
+        if (target.__proto__ === Fn.prototype) return true;
+        target = target.__proto__;
+      }
+      return false;
+    }
+  </script>
+</body>
+</html>

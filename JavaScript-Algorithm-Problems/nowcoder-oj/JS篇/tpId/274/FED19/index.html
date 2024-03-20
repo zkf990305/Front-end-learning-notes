@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>发布订阅模式</title>
+</head>
+<body>
+    <script type="text/javascript">
+        class EventEmitter {
+            // 补全代码
+            constructor() {
+                this.events = {};
+            }
+
+            // 添加事件监听函数
+            on(eventName, listener) {
+                if (!this.events[eventName]) {
+                    this.events[eventName] = [];
+                }
+                this.events[eventName].push(listener);
+            }
+
+            // 触发事件
+            emit(eventName, ...args) {
+                const eventListeners = this.events[eventName];
+                if (eventListeners) {
+                    eventListeners.forEach(listener => {
+                        listener.apply(null, args);
+                    });
+                }
+            }
+        }
+        // 示例代码
+        const emitter = new EventEmitter();
+
+        // 添加事件监听函数
+        emitter.on('event1', function(arg1, arg2) {
+            console.log('Event 1:', arg1, arg2);
+        });
+
+        emitter.on('event2', function(arg) {
+            console.log('Event 2:', arg);
+        });
+
+        // 触发事件
+        emitter.emit('event1', 'Hello', 'World'); // 输出 "Event 1: Hello World"
+        emitter.emit('event2', 'Hi'); // 输出 "Event 2: Hi"
+    </script>
+</body>
+</html>

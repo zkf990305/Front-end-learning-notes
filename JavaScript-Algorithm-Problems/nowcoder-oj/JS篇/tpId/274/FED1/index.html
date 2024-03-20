@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html  lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /* 填写样式 */
+    </style>
+</head>
+
+<body>
+<ul>
+    <li>.</li>
+    <li>.</li>
+    <li>.</li>
+</ul>
+<!-- 填写标签 -->
+<script type="text/javascript">
+    // 填写JavaScript
+    document.querySelector('ul').onclick = event => {
+        // e.target 是被点击的元素 => 判断当前是否点击的是li元素，是的话就拼接字符串
+        if (event.target && event.target.tagName.toLowerCase() === "li") {
+            // 赋值
+            event.target.innerText += '.'
+        }
+    }
+</script>
+</body>
+
+</html>
+<!--
+   事件委托允许您避免向特定节点添加事件监听器；相反，事件侦听器被添加到一个父级。
+   该事件侦听器分析冒泡事件以查找子元素的匹配项。
+   https://davidwalsh.name/event-delegate
+-->

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>简易深拷贝</title>
+</head>
+<body>
+    <script type="text/javascript">
+        const _sampleDeepClone = target => {
+            // 补全代码
+            if (typeof target !== 'object' || target === null) return target;
+            let newObject;
+            if (Array.isArray(target)) {
+                newObject = [];
+                for (let i = 0; i < target.length; i++) {
+                    newObject[i] = _sampleDeepClone(target[i]);
+                }
+            } else {
+                newObject = {};
+                for (let key in target) {
+                    if (target.hasOwnProperty(key)) {
+                        newObject[key] = _sampleDeepClone(target[key]);
+                    }
+                }
+            }
+            return newObject;
+        }
+
+        // 样例
+        const obj = {
+            name: 'John',
+            age: 30,
+            array: [1, 2, 3],
+            nestedObj: {
+                prop: 'value'
+            }
+        };
+
+        const copy = _sampleDeepClone(obj);
+
+        console.log(copy); // 打印拷贝后的新对象
+        console.log(copy === obj); // 打印 false，表示是两个不同的对象
+
+        // 修改拷贝后的对象的属性
+        copy.name = 'Jane';
+        copy.array.push(4);
+        copy.nestedObj.prop = 'new value';
+
+        console.log(obj.name); // 打印原始对象的name属性，仍为'John'
+        console.log(obj.array); // 打印原始对象的array属性，仍为[1, 2, 3]
+        console.log(obj.nestedObj.prop); // 打印原始对象的nestedObj属性的prop属性，仍为 'value'
+    </script>
+</body>
+</html>

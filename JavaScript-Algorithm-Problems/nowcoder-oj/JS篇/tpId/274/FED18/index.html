@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>寄生组合式继承</title>
+</head>
+<body>
+    <script type="text/javascript">
+        // 补全代码
+        function Human(name) {
+            this.name = name
+            this.kingdom = 'animal'
+            this.color = ['yellow', 'white', 'brown', 'black']
+        }
+        // 在 Human 原型上添加 getName 函数
+        Human.prototype.getName = function() {
+            return this.name;
+        }
+
+        function Chinese(name,age) {
+            // 继承父类构造函数属性
+            Human.call(this, name);
+            this.age = age;
+            this.color = 'yellow'
+        }
+        // 使用寄生方式继承 Human 原型
+        Chinese.prototype = Object.create(Human.prototype)
+        // 修正 Chinese 构造函数指向
+        Chinese.prototype.constructor = Chinese
+        // 在 Chinese 原型上添加 getAge 函数
+        Chinese.prototype.getAge = function() {
+            return this.age;
+        }
+        // 示例用法
+        let person = new Chinese("张三", 25);
+        console.log(person.getName()); // 输出 "张三"
+        console.log(person.getAge()); // 输出 25
+    </script>
+</body>
+</html>

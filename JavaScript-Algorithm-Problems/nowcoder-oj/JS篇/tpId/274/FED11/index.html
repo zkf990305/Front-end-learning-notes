@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Function.call</title>
+    <style>
+        /* 填写样式 */
+    </style>
+</head>
+<body>
+    <!-- 填写标签 -->
+    <script type="text/javascript">
+        // 填写JavaScript
+        Function.prototype._call = function (obj, ...args) {
+            obj = obj || window; // 如果没有传入obj，则默认为全局对象window（在浏览器环境下）
+            let fn = Symbol('obj'); // 创建一个唯一的Symbol作为临时属性名
+            obj[fn] = this; // 将当前函数赋给obj的临时属性
+            // 执行函数并获取返回值
+            let res = obj[fn](...args);
+            delete obj[fn]; // 删除临时属性
+            return res; // 返回函数执行结果
+        };
+
+
+        // function greet(name) {
+        //     console.log("Hello, " + name);
+        // }
+        //
+        // greet.call(null, "Alice");
+        // // 输出："Hello, Alice"
+        // greet._call(null, "Alice")
+        //
+        // var person = {
+        //     name: "Bob"
+        // };
+        //
+        // greet.call(person, "Charlie");
+        // greet._call(person, "Charlie");
+        // // 输出："Hello, Charlie"，函数内部的this指向person对象
+    </script>
+</body>
+</html>

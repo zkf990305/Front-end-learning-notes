@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>深拷贝</title>
+</head>
+<body>
+    <script type="text/javascript">
+        const _completeDeepClone = (target, map = new Map()) => {
+            // 补全代码
+            if (typeof target !== 'object' || target === null) {
+                return target;
+            }
+
+            // 检查已拷贝的对象中是否存在当前对象，如果存在则直接返回克隆对象
+            if (map.has(target)) {
+                return map.get(target);
+            }
+
+            let newObj;
+
+            if (Array.isArray(target)) { // 处理数组
+                newObj = [];
+                map.set(target, newObj); // 将当前对象和克隆对象添加到映射关系中
+
+                for (let i = 0; i < target.length; i++) {
+                    newObj[i] = _completeDeepClone(target[i], map);
+                }
+            } else if (target instanceof Date) { // 处理日期对象
+                newObj = new Date(target.getTime());
+            } else if (target instanceof RegExp) { // 处理正则表达式对象
+                newObj = new RegExp(target.source, target.flags);
+            } else { // 处理普通对象
+                newObj = {};
+                map.set(target, newObj); // 将当前对象和克隆对象添加到映射关系中
+
+                for (let key in target) {
+                    if (target.hasOwnProperty(key)) {
+                        newObj[key] = _completeDeepClone(target[key], map);
+                    }
+                }
+            }
+
+            return newObj;
+        }
+        // 样例
+        const obj = {
+            name: 'John',
+            age: 30,
+        };
+
+        obj.self = obj; // 创建循环引用
+
+        const copy = _completeDeepClone(obj);
+
+        console.log(copy); // 打印拷贝后的新对象，包含循环引用
+        console.log(copy === obj); // 打印 false，表示是两个不同的对象
+        console.log(copy.self === copy); // 打印 true，表示新对象也有循环引用
+
+    </script>
+</body>
+</html>

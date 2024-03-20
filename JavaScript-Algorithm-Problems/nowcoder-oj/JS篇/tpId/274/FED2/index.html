@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+  <script type="text/javascript">
+      let  arr = [1, 1, 15, 15, 'abc', 'abc',
+          true, true, false, false, undefined, undefined,
+          null, null, NaN, NaN, {}, {}];
+    <!-- 1. indexOf -->
+    // const _deleteRepeat = array => {
+    //   // 补全代码
+    //   // 声明一个空数组，用indexOf寻找如果没有该元素则加入新数组
+    //   let newArray = [];
+    //   array.forEach(item => {
+    //     if(newArray.indexOf(item) === -1) {
+    //       newArray.push(item)
+    //     }
+    //   });
+    //   return newArray;
+    // }
+    //   console.log("11",_deleteRepeat(arr))
+
+
+
+    <!-- 2. [...new Set(arr)]写法 -->
+    const _deleteRepeat = array => {
+        return [...new Set(array)];
+    }
+      console.log(_deleteRepeat(arr))
+
+
+    <!-- 3. 利用 for 嵌套 for，然后 splice 去重 (ES5 中最常用) -->
+    // const _deleteRepeat = array => {
+    //     for (let i = 0; i < array.length; i++) {
+    //         for (let j = i + 1; j < array.length; j++) {
+    //             if (array[i] === array[j]) {
+    //                 array.splice(j, 1);
+    //                 j --;
+    //             }
+    //         }
+    //     }
+    // }
+    //   _deleteRepeat(arr)
+    // console.log(arr)
+
+    <!-- 4. 利用ES6Set去重-->
+    // const _deleteRepeat = array => {
+    //     return Array.from(new Set(array))
+    // }
+    // console.log("去重后：=>",_deleteRepeat(arr));
+
+      <!-- 5. sort -->
+      // const _deleteRepeat = array => {
+      //   if (!Array.isArray(array)) {
+      //       console.log("type error")
+      //       return
+      //   }
+      //   array = array.sort();
+      //   let newArray = [array[0]];
+      //
+      //     for (let i = 1; i < array.length; i++) {
+      //         if (array[i] !== array[i - 1]) {
+      //             newArray.push(array[i])
+      //         }
+      //     }
+      //     return newArray
+      // }
+      // console.log(_deleteRepeat(arr))
+
+      <!--  6. 利用对象的属性不能相同的特点进行去重-->
+      // const _deleteRepeat = array => {
+      //   if (!Array.isArray(array)) {
+      //       console.log("type error")
+      //       return
+      //   }
+      //   let newArray = [];
+      //   let obj = {};
+      //   array.forEach(item => {
+      //       if(!obj[item]) {
+      //           obj[item] = true;
+      //           newArray.push(item);
+      //       }
+      //   })
+      //     return newArray;
+      // }
+      // console.log(_deleteRepeat(arr))
+
+      <!-- 7. 利用includes-->
+      // const _deleteRepeat = array => {
+      //   let newArray = [];
+      //   array.forEach(item => {
+      //       if (!newArray.includes(item)) {
+      //           newArray.push(item)
+      //       }
+      //   });
+      //   return newArray
+      // }
+      // console.log(_deleteRepeat(arr))
+
+      <!-- 8. 利用hasOwnProperty -->
+      // const _deleteRepeat = array => {
+      //   let newArray = [];
+      //   let obj = {};
+      //   newArray = array.filter(item => {
+      //       return obj.hasOwnProperty(typeof item + item) ? false : obj[typeof item +item] = true
+      //   });
+      //   return newArray
+      // }
+      // console.log(_deleteRepeat(arr))
+
+      <!-- 9. filter + indexof-->
+      // const _deleteRepeat = array => {
+      //     return array.filter((item, index) => {
+      //       return array.indexOf(item) === index
+      //   })
+      // }
+      // console.log(_deleteRepeat(arr))
+
+      <!-- 10 . MAP-->
+      // const _deleteRepeat = array => {
+      //   let newArray = [];
+      //   let map = new Map();
+      //   array.forEach(item => {
+      //       if (!map.has(item)) {
+      //           map.set(item, true);
+      //           newArray.push(item);
+      //       }
+      //   });
+      //   return newArray
+      // }
+      // console.log(_deleteRepeat(arr))
+    <!-- 11. 利用 reduce+includes -->
+      // const _deleteRepeat = array => {
+      //     return array.reduce((accumulator, item) => {
+      //         if (!accumulator.includes(item)) {
+      //             accumulator.push(item);
+      //         }
+      //         return accumulator;
+      //     }, []);
+      // };
+      // console.log(_deleteRepeat(arr))
+
+      <!-- 12. 利用 递归 -->
+      // const _deleteRepeat = array => {
+      //     if (array.length === 0) {
+      //         return array;
+      //     } else {
+      //         const first = array[0];
+      //         const rest = array.slice(1);
+      //         if (rest.indexOf(first) !== -1) {
+      //             return [first].concat(_deleteRepeat(rest));
+      //         } else {
+      //             return _deleteRepeat(rest);
+      //         }
+      //     }
+      // };
+      // console.log(_deleteRepeat(arr))
+
+      // const _deleteRepeat = array=>  {
+      //   let len = array.length;
+      //   // 排序后更加方便去重
+      //   array = array.sort();
+      //     const loop = index => {
+      //         if (index >= 1) {
+      //             if (array[index] === array[index - 1]) {
+      //                 array.splice(index, 1);
+      //             }
+      //             // 递归loop，然后数组去重
+      //             loop(index - 1);
+      //         }
+      //     }
+      //   loop(len - 1);
+      //   return array;
+      // }
+      // console.log(_deleteRepeat(arr))
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        /* 填写样式 */
+    </style>
+    <title>全排列</title>
+</head>
+<body>
+    <!-- 填写标签 -->
+    <script type="text/javascript">
+        // 填写JavaScript 回溯算法
+        // 先从 [a,b,c] 选取⼀个数。然后继续从 [a,b,c] 选取⼀个数，并且这个数不能是已经选取过的数
+        const _permute = string => {
+            if (string.length === 0) return [[]];
+            const res = [];
+            backtrack(res, [], string);
+            return res;
+        }
+        const backtrack = (list, tempStr, str) => {
+            if (tempStr.length === str.length) return list.push(tempStr.join(""));
+            for (let i = 0; i < str.length; i++) {
+                if (tempStr.includes(str[i])) continue;
+                tempStr.push(str[i]);
+                backtrack(list, tempStr, str);
+                tempStr.pop();
+            }
+        }
+        console.log(_permute('abc'))
+    </script>
+</body>
+</html>

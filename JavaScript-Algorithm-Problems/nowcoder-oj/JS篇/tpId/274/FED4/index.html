@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <!-- 填写标签 -->
+  <script type="text/javascript">
+    // 填写JavaScript
+    // const _quickSort = array => {
+    // //   快排 内置API
+    //     return array.sort((a, b) => a -b);
+    // }
+    const _quickSort = array => {
+        //   快排 从小到大
+        if (array.length < 2) return array;
+        let middleIndex = Math.floor(array.length / 2);
+        // 该下标所在元素（可能重复）第一个不用判断
+        let middle = array.splice(middleIndex, 1)[0];
+        let leftArray = [];
+        let rightArray = [];
+        for (let i = 0; i < array.length; i++) {
+            if (array[i] < middle) {
+                leftArray.push(array[i]);
+            }else {
+                rightArray.push(array[i]);
+            }
+        }
+        return [..._quickSort(leftArray), middle,..._quickSort(rightArray)]
+    }
+    let arr =  [0, -1, 1, -2, 2];
+    console.log(_quickSort(arr))
+  </script>
+</body>
+</html>
